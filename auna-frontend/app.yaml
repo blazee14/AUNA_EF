@@ -1,0 +1,20 @@
+runtime: nodejs20
+
+
+instance_class: F1
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+
+handlers:
+  - url: /assets
+    static_dir: dist/assets
+
+  - url: /(.*\..+)$
+    static_files: dist/\1
+    upload: dist/.*\..+$
+
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html

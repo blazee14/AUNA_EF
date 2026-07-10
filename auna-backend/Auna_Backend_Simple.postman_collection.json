@@ -1,0 +1,586 @@
+{
+	"info": {
+		"_postman_id": "auna-backend-simple-api",
+		"name": "Auna Backend API - Simple",
+		"description": "Collection for Auna medical appointments system API without JWT authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://backend-dot-auna-app-upn.uc.r.appspot.com",
+			"type": "string"
+		},
+		{
+			"key": "local_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"77777777\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login con credenciales de administrador predefinidas"
+					}
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Registrar Usuario Paciente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Carlos\",\n  \"apellido\": \"Pérez López\",\n  \"tipoDocumento\": \"DNI\",\n  \"numDocumento\": \"12345678\",\n  \"correoElectronico\": \"juan.perez@email.com\",\n  \"numeroCelular\": \"999888777\",\n  \"tipoUsuario\": \"PACIENTE\",\n  \"contrasena\": \"micontrasena123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						},
+						"description": "Crear nuevo usuario tipo paciente"
+					}
+				},
+				{
+					"name": "Registrar Usuario Administrador",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"María Elena\",\n  \"apellido\": \"García Torres\",\n  \"tipoDocumento\": \"DNI\",\n  \"numDocumento\": \"87654321\",\n  \"correoElectronico\": \"maria.garcia@auna.com\",\n  \"numeroCelular\": \"987654321\",\n  \"tipoUsuario\": \"ADMINISTRADOR\",\n  \"contrasena\": \"adminpass456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						},
+						"description": "Crear nuevo usuario administrador"
+					}
+				},
+				{
+					"name": "Listar Todos los Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuarios"
+							]
+						},
+						"description": "Obtener lista completa de usuarios registrados"
+					}
+				},
+				{
+					"name": "Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuarios",
+								"1"
+							]
+						},
+						"description": "Obtener usuario específico por ID"
+					}
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Carlos\",\n  \"apellido\": \"Pérez Modificado\",\n  \"tipoDocumento\": \"DNI\",\n  \"numDocumento\": \"12345678\",\n  \"correoElectronico\": \"juan.nuevo@email.com\",\n  \"numeroCelular\": \"999888777\",\n  \"tipoUsuario\": \"PACIENTE\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuarios/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuarios",
+								"2"
+							]
+						},
+						"description": "Actualizar información de usuario existente"
+					}
+				}
+			]
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "Listar Especialidades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/especialidades",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"especialidades"
+							]
+						},
+						"description": "Obtener todas las especialidades médicas disponibles"
+					}
+				},
+				{
+					"name": "Crear Especialidad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreEspecialidad\": \"Traumatología\",\n  \"descripcion\": \"Especialidad médica enfocada en lesiones del sistema musculoesquelético\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/especialidades",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"especialidades"
+							]
+						},
+						"description": "Agregar nueva especialidad médica"
+					}
+				},
+				{
+					"name": "Especialidad por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/especialidades/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"especialidades",
+								"1"
+							]
+						},
+						"description": "Obtener especialidad específica"
+					}
+				}
+			]
+		},
+		{
+			"name": "Sedes",
+			"item": [
+				{
+					"name": "Listar Sedes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/sedes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sedes"
+							]
+						},
+						"description": "Obtener todas las sedes de Auna"
+					}
+				},
+				{
+					"name": "Crear Sede",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreSede\": \"Clínica Auna Surco\",\n  \"nombreDistrito\": \"Santiago de Surco\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/sedes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sedes"
+							]
+						},
+						"description": "Agregar nueva sede de atención"
+					}
+				}
+			]
+		},
+		{
+			"name": "Detalle Sedes",
+			"item": [
+				{
+					"name": "Listar Especialidades por Sede",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/detalleSedes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"detalleSedes"
+							]
+						},
+						"description": "Ver qué especialidades están disponibles en cada sede"
+					}
+				},
+				{
+					"name": "Asociar Especialidad a Sede",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sede\": { \"idSedes\": 1 },\n  \"especialidad\": { \"idEspecialidad\": 3 }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/detalleSedes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"detalleSedes"
+							]
+						},
+						"description": "Habilitar especialidad en una sede específica"
+					}
+				}
+			]
+		},
+		{
+			"name": "Médicos",
+			"item": [
+				{
+					"name": "Listar Médicos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/medicos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"medicos"
+							]
+						},
+						"description": "Obtener directorio completo de médicos"
+					}
+				},
+				{
+					"name": "Registrar Médico",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombreMedico\": \"Dr. Carlos Rodríguez\",\n  \"especialidad\": { \"idEspecialidad\": 1 }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/medicos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"medicos"
+							]
+						},
+						"description": "Agregar nuevo médico al directorio"
+					}
+				}
+			]
+		},
+		{
+			"name": "Turnos de Atención",
+			"item": [
+				{
+					"name": "Listar Turnos Disponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/turnosAtencionCitas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"turnosAtencionCitas"
+							]
+						},
+						"description": "Ver todos los horarios de atención programados"
+					}
+				},
+				{
+					"name": "Crear Turno de Atención",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"medico\": { \"idMedico\": 1 },\n  \"detalleSede\": { \"idDetalleSede\": 1 },\n  \"fecha\": \"2026-06-25\",\n  \"horaInicio\": \"09:00:00\",\n  \"horaFin\": \"12:00:00\",\n  \"numCupos\": 8\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/turnosAtencionCitas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"turnosAtencionCitas"
+							]
+						},
+						"description": "Programar nuevo horario de atención médica"
+					}
+				}
+			]
+		},
+		{
+			"name": "Citas Médicas",
+			"item": [
+				{
+					"name": "Listar Todas las Citas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/citas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"citas"
+							]
+						},
+						"description": "Ver todas las citas programadas en el sistema"
+					}
+				},
+				{
+					"name": "Reservar Cita Médica",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"paciente\": { \"idPaciente\": 1 },\n  \"turnoAtencion\": { \"idTurnosAtencionCitas\": 1 },\n  \"horaCita\": \"09:30:00\",\n  \"estado\": \"POR_ATENDER\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/citas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"citas"
+							]
+						},
+						"description": "Agendar nueva cita médica para un paciente"
+					}
+				},
+				{
+					"name": "Citas de un Paciente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/citas/paciente/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"citas",
+								"paciente",
+								"1"
+							]
+						},
+						"description": "Ver historial de citas de un paciente específico"
+					}
+				}
+			]
+		},
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Listar Pacientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/pacientes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pacientes"
+							]
+						},
+						"description": "Obtener directorio de todos los pacientes registrados"
+					}
+				}
+			]
+		},
+		{
+			"name": "Pagos",
+			"item": [
+				{
+					"name": "Generar Link de Pago MercadoPago",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/mercado",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"mercado"
+							]
+						},
+						"description": "Crear enlace de pago para consulta médica (S/. 50.00)"
+					}
+				}
+			]
+		}
+	]
+}

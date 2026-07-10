@@ -1,0 +1,236 @@
+.sidebar {
+  background-color: #003366;
+  position: fixed;
+  width: 250px;
+  height: 100vh; /* Ocupa toda la altura visible */
+  overflow-y: auto; /* Permite scroll interno si el contenido es muy largo */
+  z-index: 1000;
+  transition: all 0.5s;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar .nav-link {
+  color: #dee2e6;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-left: 4px solid #4eacff;
+}
+
+.sidebar .sidebar-header {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #495057;
+}
+
+.sidebar.collapsed .sidebar-text {
+  display: none;
+}
+
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+}
+
+.sidebar .bi {
+  font-size: 1.2rem;
+}
+
+/* Evita que el contenido principal se desborde */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px); /* Asegura que el ancho no exceda la pantalla */
+  overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+/* Sidebar colapsado en móviles por defecto */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* Oculta completamente */
+  }
+  .sidebar.collapsed {
+    transform: translateX(0); /* Muestra solo íconos */
+  }
+  .sidebar:not(.collapsed) {
+    width: 80%; /* Muestra completo al expandir */
+    transform: translateX(0);
+  }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  .sidebar:not(.collapsed) + .main-content {
+    margin-left: 80%; /* Empuja el contenido al abrir el sidebar */
+    width: 20%; /* Restringe el ancho del contenido */
+    overflow: hidden; /* Evita que el contenido se muestre mal */
+  }
+}
+
+/* Panel de accesibilidad */
+.accessibility-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1rem;
+  padding: 0.9rem;
+  margin: 1rem 0;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.accessibility-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.accessibility-kicker {
+  margin: 0 0 0.15rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.accessibility-heading {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.accessibility-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.accessibility-control {
+  margin-bottom: 0.75rem;
+}
+
+.accessibility-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.8rem;
+  margin-bottom: 0.6rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  background: rgba(5, 20, 41, 0.62);
+  text-align: left;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.accessibility-card:hover,
+.accessibility-card:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(12, 39, 73, 0.84);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.22);
+  outline: none;
+}
+
+.accessibility-card.is-active {
+  background: linear-gradient(135deg, #0d6efd, #4eacff);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 16px 28px rgba(13, 110, 253, 0.3);
+}
+
+.accessibility-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.accessibility-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.accessibility-card__title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.accessibility-card__subtitle {
+  font-size: 0.72rem;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.accessibility-card__state {
+  align-self: start;
+  padding: 0.22rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.63rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.accessibility-card.is-active .accessibility-card__state {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Botón Salir - Estilo Principal */
+.logout .btn-outline-danger {
+  color: #fff;
+  background-color: #dc3545; /* Rojo sólido (en lugar de outline) */
+  border: 2px solid #dc3545;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio entre ícono y texto */
+}
+
+/* Efecto Hover */
+.logout .btn-outline-danger:hover {
+  background-color: #c82333; /* Rojo más oscuro */
+  transform: translateY(-2px); /* Levanta ligeramente */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Efecto al hacer clic */
+.logout .btn-outline-danger:active {
+  transform: translateY(0); /* Vuelve a posición original */
+  box-shadow: none;
+}
+
+

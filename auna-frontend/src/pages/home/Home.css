@@ -1,0 +1,254 @@
+/* Home.css */
+
+/* ... (código existente) ... */
+
+/* Estilo para alto contraste (Texto Blanco sobre Fondo Negro) */
+.dark-mode-text {
+    color: #f8f9fa !important; /* Se mantiene solo el color de texto blanco */
+    /* ¡IMPORTANTE!: Asegúrate de que no haya aquí un font-size para que sea independiente */
+}
+
+/* Opcional: Asegúrate de que los encabezados se vean */
+.dark-mode-text h1, .dark-mode-text h2, .dark-mode-text h3 {
+    color: #ffffff !important;
+}
+
+/* 🔥 CLASE INDEPENDIENTE: Aumento de fuente - Máximo Tamaño */
+.large-font {
+    font-size: 1.5rem !important; /* Aumento a 1.5 veces el tamaño base */
+}
+
+/* Para asegurar que los elementos de texto dentro del main-content también se beneficien */
+.large-font p, .large-font span, .large-font strong, .large-font li, .large-font a {
+    font-size: 1.5rem !important;
+}
+
+/* Modo de alto contraste más visible en toda la vista */
+.mode-high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.mode-high-contrast .main-content,
+.mode-high-contrast .navbarH-container,
+.mode-high-contrast .navbarHAdmin-container,
+.mode-high-contrast .sidebar,
+.mode-high-contrast .sidebarAdmin {
+  background-color: #050505 !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.mode-high-contrast .main-content {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+.mode-high-contrast a,
+.mode-high-contrast button,
+.mode-high-contrast .nav-link {
+  color: #fff !important;
+}
+
+.mode-high-contrast .nav-link.active,
+.mode-high-contrast .accessibility-live-bar,
+.mode-high-contrast .accessibility-card.is-active {
+  border-color: #ffd24a !important;
+}
+
+.mode-high-contrast .accessibility-live-bar__chip {
+  background: #ffd24a;
+  color: #000;
+}
+
+/* Texto más grande y evidente en toda la pantalla */
+.mode-large-text .main-content,
+.mode-large-text .sidebar,
+.mode-large-text .navbarH-container,
+.mode-large-text .navbarHAdmin-container {
+  font-size: 1.12rem;
+}
+
+.mode-large-text h1,
+.mode-large-text h2,
+.mode-large-text h3,
+.mode-large-text h4 {
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+.mode-large-text .content-wrapper,
+.mode-large-text .accessibility-live-bar {
+  transform: scale(1.01);
+  transform-origin: top left;
+}
+
+/* Daltonismo: cambio visual más claro con acentos cálidos y bordes definidos */
+.colorblind-mode {
+  filter: saturate(1.3) contrast(1.22) hue-rotate(-8deg);
+}
+
+.mode-colorblind .nav-link.active,
+.mode-colorblind .accessibility-card.is-active,
+.mode-colorblind .accessibility-live-bar,
+.mode-colorblind .btn,
+.mode-colorblind .sidebar-header,
+.mode-colorblind .sidebarAdmin-header {
+  border-color: #ffb000 !important;
+}
+
+.mode-colorblind .accessibility-live-bar__chip {
+  background: linear-gradient(135deg, #ffb000, #ff6a00);
+}
+
+/* Modo enfoque: resalta el contenido principal y atenúa lo secundario */
+.mode-focus .sidebar,
+.mode-focus .sidebarAdmin,
+.mode-focus .navbarH-container,
+.mode-focus .navbarHAdmin-container {
+  opacity: 0.72;
+  filter: saturate(0.8) brightness(0.92);
+}
+
+.mode-focus .main-content {
+  position: relative;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.16) inset, 0 0 0 3px rgba(255, 255, 255, 0.18);
+  border-radius: 1rem;
+}
+
+.mode-focus .accessibility-live-bar {
+  border-color: rgba(255, 193, 7, 0.8);
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.18), rgba(255, 193, 7, 0.32));
+}
+
+/* Resaltar controles: todo lo clicable se vuelve muy visible */
+.mode-highlight-interactions a,
+.mode-highlight-interactions button,
+.mode-highlight-interactions input,
+.mode-highlight-interactions select,
+.mode-highlight-interactions textarea,
+.mode-highlight-interactions [role="button"],
+.mode-highlight-interactions [role="link"] {
+  outline: 3px solid #ffb000 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 176, 0, 0.18) !important;
+}
+
+.mode-highlight-interactions .accessibility-live-bar__chip {
+  background: #ffb000;
+  color: #111;
+}
+
+.mode-highlight-interactions .nav-link.active {
+  background: rgba(255, 176, 0, 0.22) !important;
+}
+
+.mode-highlight-interactions .main-content {
+  background-image: linear-gradient(180deg, rgba(255, 176, 0, 0.04), transparent 160px);
+}
+
+/* Panel informativo de modos activos */
+.accessibility-live-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 1.25rem 0;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.12), rgba(78, 172, 255, 0.18));
+  border: 1px solid rgba(13, 110, 253, 0.35);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.accessibility-live-bar__label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.accessibility-live-bar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.accessibility-live-bar__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #0d6efd;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Nota: Para que el texto dentro de HomeCitas se vea en modo oscuro, HomeCitas.css 
+   debe seguir sin tener 'background-color: #ffffff;' en .HomeCitas-container. */
+
+.home-body {
+    font-family: 'Marmelad', Arial, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px; /* Igual al ancho del sidebar */
+  transition: margin-left 0.3s ease;
+  font-family: 'Lekton', sans-serif;
+}
+
+.content-wrapper {
+  padding: 20px;
+}
+
+/* Cuando el sidebar está colapsado */
+.sidebar.collapsed + .main-content {
+  margin-left: 80px; /* Igual al ancho del sidebar colapsado */
+}
+
+/* Asegura que el navbar no se solape con el sidebar */
+.navbarH-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Debajo del sidebar pero encima del contenido */
+}
+
+/* Estilos responsivos (opcional) */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 80px;
+  }
+  .sidebar:not(.collapsed) + .main-content {
+    margin-left: 250px;
+  }
+
+  .sidebar:not(.collapsed) ~ .sidebar-overlay {
+    display: block;
+  }
+}
+
+.colorblind-mode img {
+  filter: none;
+}
+
+/* Reducción de movimiento */
+.reduced-motion *::before,
+
